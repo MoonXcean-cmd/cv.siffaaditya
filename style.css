@@ -1,0 +1,705 @@
+/* ============================================================
+   GLOBAL STYLE
+============================================================ */
+body {
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    background: #B87C4C;
+    color: white;
+}
+
+:root {
+    --dark: #3d1f0f;
+    --brown: #4F200D;
+    --light: #FFF7D1;
+    --card: #452829;
+    --gold: #FFF7D1;
+}
+
+/* ============================================================
+   WELCOME SCREEN
+============================================================ */
+#welcome-screen {
+    position: fixed;
+    inset: 0;
+    background: #4F200D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    transition: opacity 0.8s ease;
+}
+
+#welcome-screen.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.welcome-box {
+    text-align: center;
+    color: white;
+}
+
+.welcome-logo {
+    width: 140px;
+    margin-bottom: 15px;
+}
+
+#welcome-screen h1 {
+    font-size: 28px;
+    margin: 0;
+}
+
+#welcome-screen h2 {
+    font-size: 34px;
+    margin: 10px 0 25px;
+    font-weight: bold;
+}
+
+#enter-btn {
+    padding: 12px 28px;
+    background: var(--light);
+    color: var(--brown);
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+#enter-btn:hover {
+    transform: scale(1.08);
+    background: white;
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+header {
+    background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("limin.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 12px;
+}
+
+header h1 {
+    font-size: 52px;
+    margin: 0;
+}
+
+header p {
+    font-size: 22px;
+    opacity: 0.9;
+}
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+/* NAVBAR */
+/* NAVBAR */
+nav {
+    background: var(--brown);
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1500;
+}
+
+/* Brand */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-brand .logo {
+    width: 40px;
+}
+
+/* Menu */
+.nav-menu {
+    display: flex;
+    gap: 18px;
+}
+
+.nav-menu a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.nav-menu a:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+    transition: .3s;
+}
+
+/* MOBILE */
+@media(max-width: 768px) {
+
+    /* hide normal menu */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 230px;
+        height: 100vh;
+        background: var(--brown);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        transition: 0.35s ease;
+        z-index: 2000;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+/* HAMBURGER OPEN → jadi X */
+.hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ============================================================
+   SECTIONS
+============================================================ */
+.section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 70px 20px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 36px;
+    color: var(--light);
+    margin-bottom: 35px;
+}
+
+/* ============================================================
+   ABOUT
+============================================================ */
+.about-wrapper {
+    max-width: 1050px;
+    margin: auto;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.about-icon {
+    width: 90px;
+    height: 90px;
+    border-radius: 18px;
+    background: rgba(212,179,90,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(212,179,90,0.25);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+}
+
+.about-icon i {
+    font-size: 40px;
+    color: var(--gold);
+}
+
+.about-card {
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    padding: 35px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.55);
+    backdrop-filter: blur(7px);
+    position: relative;
+    overflow: hidden;
+    transition: .35s ease;
+}
+
+.about-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(212,179,90,0.55), rgba(212,179,90,0.1));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: .6;
+}
+
+.about-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 28px 60px rgba(0,0,0,0.75);
+}
+
+.about-card h3 {
+    color: var(--gold);
+    font-size: 24px;
+    margin-bottom: 14px;
+    text-shadow: 0 0 14px rgba(212,179,90,0.35);
+}
+
+.about-card p {
+    color: #452829;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* ============================================================
+   VISI MISI
+============================================================ */
+.vision-wrapper {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+}
+
+.vision-card {
+    background: rgba(255,255,255,0.04);
+    border-radius: 18px;
+    padding: 35px 30px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.06);
+    backdrop-filter: blur(6px);
+    position: relative;
+    overflow: hidden;
+    transition: 0.35s ease;
+}
+
+.vision-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(212,179,90,0.55), rgba(212,179,90,0.1));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0.55;
+}
+
+.vision-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 28px 60px rgba(0,0,0,0.75);
+}
+
+.vision-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: rgba(212,179,90,0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    border: 1px solid rgba(212,179,90,0.3);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+}
+
+.vision-icon i {
+    color: var(--gold);
+    font-size: 26px;
+}
+
+.vision-card h3 {
+    color: var(--gold);
+    font-size: 22px;
+    margin-bottom: 12px;
+    text-shadow: 0 0 10px rgba(212,179,90,0.22);
+}
+
+.vision-card p,
+.vision-card li {
+    color: #452829;
+    line-height: 1.7;
+    font-size: 17px;
+}
+
+.vision-card ul {
+    padding-left: 20px;
+}
+
+/* ============================================================
+   SERVICES
+============================================================ */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
+
+.service-box {
+    background: var(--card);
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.20);
+    transition: 0.3s;
+}
+
+.service-box:hover {
+    transform: translateY(-8px);
+}
+
+.service-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    color: var(--gold);
+    display: block;
+}
+
+/* ============================================================
+   LEGALITAS
+============================================================ */
+.legal-wrapper {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.legal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(155, 129, 59, 0.12);
+    padding: 10px 22px;
+    border-radius: 40px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 30px;
+    border: 1px solid rgba(212, 179, 90, 0.25);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.legal-badge i {
+    font-size: 20px;
+}
+
+.legal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.legal-card {
+    background: rgba(255,255,255,0.04);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.06);
+    text-align: left;
+}
+
+.legal-card h3 {
+    color: var(--gold);
+    font-size: 20px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.legal-card h3 i {
+    font-size: 22px;
+}
+
+.legal-card p {
+    color: #452829;
+    margin: 6px 0;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   TEAM
+============================================================ */
+.team-wrapper {
+    max-width: 900px;
+    margin: auto;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.team-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    padding: 35px 30px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.07);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+    position: relative;
+    overflow: hidden;
+    transition: 0.35s ease;
+    backdrop-filter: blur(6px);
+}
+
+.team-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(212,179,90,0.5), rgba(212,179,90,0.08));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: .55;
+}
+
+.team-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 28px 60px rgba(0,0,0,0.75);
+}
+
+.team-card h3 {
+    color: var(--gold);
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    text-shadow: 0 0 10px rgba(212,179,90,0.25);
+}
+
+.team-card h3 i {
+    color: var(--gold);
+    font-size: 22px;
+}
+
+.team-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 10px 0 18px;
+    opacity: .6;
+}
+
+.team-card p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #452829;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   GALLERY
+============================================================ */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+    gap: 12px;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.gallery-img:hover {
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   CONTACT
+============================================================ */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+    gap: 22px;
+}
+
+.contact-card {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    transition: 0.3s;
+}
+
+.contact-card:hover {
+    transform: scale(1.04);
+}
+
+.contact-icon {
+    font-size: 42px;
+    color: var(--light);
+    margin-bottom: 12px;
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-top: 12px;
+    font-weight: bold;
+    background: var(--light);
+    color: var(--brown);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.contact-btn:hover {
+    background: white;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: var(--brown);
+    margin-top: 40px;
+}
+
+/* ============================================================
+   REVEAL ANIMATION
+============================================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 900px) {
+    .vision-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .legal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 38px;
+    }
+
+    header p {
+        font-size: 18px;
+    }
+
+    .logo {
+        width: 100px;
+    }
+}
+
+@media(max-width: 600px) {
+    header {
+        padding: 60px 15px;
+    }
+
+    #welcome-screen h1 {
+        font-size: 22px;
+    }
+    #welcome-screen h2 {
+        font-size: 28px;
+    }
+
+    #enter-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .services {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-img {
+        height: 120px;
+    }
+}
+
+@media(max-width: 500px) {
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav a {
+        margin: 5px 0;
+    }
+}
